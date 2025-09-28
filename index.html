@@ -165,21 +165,12 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: var(--gradient-1);
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/o1tdbzg5_AtCorus18Mar2022.JPG');
+            background-size: cover;
+            background-position: center;
             color: white;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="600" cy="700" r="120" fill="url(%23a)"/></svg>') no-repeat center center;
-            opacity: 0.3;
         }
 
         .hero-content {
@@ -197,46 +188,60 @@
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeInUp 1s ease 0.3s both;
+            color: var(--text-secondary);
         }
 
-        .hero-dots {
+        .hero-icons {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 2rem;
             margin: 2rem 0;
+            opacity: 0.8;
         }
 
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+        .hero-icon {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
             animation: pulse 2s infinite;
         }
 
-        .dot:nth-child(2) {
+        .hero-icon:nth-child(2) {
             animation-delay: 0.5s;
         }
 
+        .hero-icon:nth-child(3) {
+            animation-delay: 1s;
+        }
+
         .cta-button {
-            display: inline-block;
-            background: var(--accent-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
             color: white;
             padding: 1rem 2rem;
-            border-radius: 50px;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
             animation: fadeInUp 1s ease 0.6s both;
         }
 
         .cta-button:hover {
+            background: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .cta-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover i {
+            transform: rotate(90deg);
         }
 
         /* Sections */
