@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajith Vasu | Artist-Technologist Portfolio</title>
+    <meta name="description" content="Transform ideas into production-ready applications with AI. Build web apps, mobile platforms, and custom software through simple conversation, no coding required. A product of emergent.sh">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --background: #ffffff;
+            --surface: #f9fafb;
+            --border: #e5e7eb;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--gradient-1);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="600" cy="700" r="120" fill="url(%23a)"/></svg>') no-repeat center center;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-dots {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Awards Section */
+        .awards-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-year {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-right: 2rem;
+            min-width: 100px;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-content .organization {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .experience-company {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .experience-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background: var(--background);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        .achievements {
+            margin-top: 1rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            background: var(--gradient-2);
+            color: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-year {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-category {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .gallery-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .philosophy-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .philosophy-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .philosophy-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            margin: 3rem 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+        }
+
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .interest-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .back-to-top {
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Emergent Badge */
+        .emergent-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .emergent-badge:hover {
+            transform: translateY(-2px);
+        }
+
+        .emergent-badge img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-year {
+                margin-right: 0;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">Ajith Vasu</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title playfair">Ajith Vasu</h1>
+            <p class="hero-subtitle">Where Art Meets Technology</p>
+            <div class="hero-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <a href="#about" class="cta-button">Discover My Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title playfair">About Me</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Visionary Artist-Technologist</h3>
+                    <p>A visionary artist-technologist bridging the gap between creative expression and technological innovation. Through decades of experience in multimedia production, fine arts, and spiritual practice, I've dedicated my career to creating meaningful digital experiences that inspire and transform.</p>
+                    <p>Rooted in Vipassana meditation and Ashtangamargga principles, my work reflects a deep commitment to using technology as a force for global compassion and positive change.</p>
+                    <h3>Mission</h3>
+                    <p>To combine Art & Technology for a better planet</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/o1tdbzg5_AtCorus18Mar2022.JPG" alt="Ajith Vasu at work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="section" style="background: var(--surface);">
+        <div class="container">
+            <h2 class="section-title playfair">Awards & Recognition</h2>
+            <p class="section-subtitle">Celebrating excellence in the intersection of art, technology, and innovation</p>
+            
+            <div class="awards-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Excellence in Digital Innovation</h3>
+                        <div class="organization">Creative Technology Alliance</div>
+                        <p>Recognition for pioneering work in multimedia education technology</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>Outstanding Achievement in Animation</h3>
+                        <div class="organization">International Multimedia Society</div>
+                        <p>For contributions to children's educational content</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3>Artistic Excellence Award</h3>
+                        <div class="organization">Digital Arts Foundation</div>
+                        <p>Celebrating the fusion of traditional art with modern technology</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>Innovation in Interactive Media</h3>
+                        <div class="organization">Tech Creative Guild</div>
+                        <p>For developing groundbreaking educational interactive experiences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title playfair">Professional Journey</h2>
+            <p class="section-subtitle">Decades of innovation at the intersection of creativity and technology</p>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Technical Director</div>
+                            <div class="experience-company">Nelvana/Corus Entertainment</div>
+                        </div>
+                        <div class="experience-period">2020 - Present</div>
+                    </div>
+                    <p>Leading multimedia production pipelines and innovative animation technologies for internationally distributed content.</p>
+                    <div class="achievements">
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Streamlined production workflows</li>
+                            <li>Implemented cutting-edge rendering systems</li>
+                            <li>Mentored next-generation artists</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Creative Director</div>
+                            <div class="experience-company">Pipeline Studios</div>
+                        </div>
+                        <div class="experience-period">2018 - 2020</div>
+                    </div>
+                    <p>Oversaw creative development of multimedia educational content and interactive learning experiences.</p>
+                    <div class="achievements">
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Developed award-winning educational series</li>
+                            <li>Created innovative interactive platforms</li>
+                            <li>Led cross-functional creative teams</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Multimedia Director</div>
+                            <div class="experience-company">Sherston Software</div>
+                        </div>
+                        <div class="experience-period">2015 - 2018</div>
+                    </div>
+                    <p>Pioneered educational technology solutions combining artistic storytelling with interactive learning.</p>
+                    <div class="achievements">
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Launched successful educational game series</li>
+                            <li>Integrated AI-driven learning analytics</li>
+                            <li>Expanded international market presence</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Senior Animation Specialist</div>
+                            <div class="experience-company">NIIT Technologies</div>
+                        </div>
+                        <div class="experience-period">2012 - 2015</div>
+                    </div>
+                    <p>Developed innovative training solutions and corporate learning platforms using advanced animation techniques.</p>
+                    <div class="achievements">
+                        <h4>Key Achievements:</h4>
+                        <ul>
+                            <li>Created enterprise-level training modules</li>
+                            <li>Implemented VR learning experiences</li>
+                            <li>Built scalable content management systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid" style="margin-top: 4rem;">
+                <div class="stat-card">
+                    <span class="stat-number">15+</span>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">50+</span>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">4</span>
+                    <div class="stat-label">Industry Leaders</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section" style="background: var(--surface);">
+        <div class="container">
+            <h2 class="section-title playfair">Major Projects</h2>
+            <p class="section-subtitle">Transformative multimedia experiences that blend storytelling with cutting-edge technology</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/amui86fc_Millie.PNG" alt="Milllie Magnificent" class="project-image">
+                    <div class="project-content">
+                        <div class="project-year">2022</div>
+                        <div class="project-category">Children's Educational Series</div>
+                        <h3 class="project-title">Milllie Magnificent</h3>
+                        <p class="project-description">With a spark of imagination and a load of determination, Millie and her Creato-crew friends strive to find the most magnificent solutions to their neighbourhood's challenges.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">3D Animation</span>
+                            <span class="project-tag">Interactive Media</span>
+                            <span class="project-tag">Educational Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Watch on YouTube</a>
+                            <a href="#" class="project-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/xukowcha_HotelT.PNG" alt="Hotel Transylvania" class="project-image">
+                    <div class="project-content">
+                        <div class="project-year">2021</div>
+                        <div class="project-category">2D Animation Series</div>
+                        <h3 class="project-title">Hotel Transylvania - TV Series (Sony Pictures)</h3>
+                        <p class="project-description">When Dracula is away, teenage Mavis runs Hotel Transylvania with her monster friends. Based on the 2012 feature film, this 2D animated series showcases comedy and character-driven storytelling.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">2D Character Animation</span>
+                            <span class="project-tag">Traditional Animation</span>
+                            <span class="project-tag">Comedy Timing</span>
+                            <span class="project-tag">Character Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Watch on YouTube</a>
+                            <a href="#" class="project-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/xvtduiyd_Binky.PNG" alt="Agent Binky" class="project-image">
+                    <div class="project-content">
+                        <div class="project-year">2020</div>
+                        <div class="project-category">Educational Animation</div>
+                        <h3 class="project-title">Agent Binky and the Pets of the Universe</h3>
+                        <p class="project-description">Developed engaging educational animations that simplify complex concepts through visual storytelling.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Educational Animation</span>
+                            <span class="project-tag">Visual Effects</span>
+                            <span class="project-tag">Interactive Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Watch on YouTube</a>
+                            <a href="#" class="project-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/19p0zsm8_Chuck.PNG" alt="Chuck and Friends" class="project-image">
+                    <div class="project-content">
+                        <div class="project-year">2019</div>
+                        <div class="project-category">Technical Animation</div>
+                        <h3 class="project-title">The Adventures of Chuck And Friends</h3>
+                        <p class="project-description">Demonstration of sophisticated animation methods combining traditional principles with modern technology.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Advanced Animation</span>
+                            <span class="project-tag">Technical Direction</span>
+                            <span class="project-tag">Pipeline Development</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Watch on YouTube</a>
+                            <a href="#" class="project-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/44radu25_BBear.png" alt="Barnaby Bear" class="project-image">
+                    <div class="project-content">
+                        <div class="project-year">2018</div>
+                        <div class="project-category">Educational Interactive Media</div>
+                        <h3 class="project-title">BBC's Where in the World is Barnaby Bear</h3>
+                        <p class="project-description">Created educational multimedia content for BBC featuring Barnaby Bear's geographical adventures, combining interactive storytelling with educational objectives for children.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Interactive Media</span>
+                            <span class="project-tag">Educational Design</span>
+                            <span class="project-tag">Multimedia Production</span>
+                            <span class="project-tag">Geographic Content</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/euc3uxi9_BGuppies.PNG" alt="Bubble Guppies" class="project-image">
+                    <div class="project-content">
+                        <div class="project-year">2017</div>
+                        <div class="project-category">Children's Animation Series</div>
+                        <h3 class="project-title">Nickelodeon's Bubble Guppies Series</h3>
+                        <p class="project-description">Contributed to the beloved underwater adventure series featuring colorful characters in educational musical episodes that teach preschoolers through engaging storytelling.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Character Animation</span>
+                            <span class="project-tag">Underwater Effects</span>
+                            <span class="project-tag">Musical Animation</span>
+                            <span class="project-tag">Preschool Education</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Watch on YouTube</a>
+                            <a href="#" class="project-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creative Process Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title playfair">Creative Process</h2>
+            <p class="section-subtitle">Behind the scenes of a multidisciplinary artist - where technology, traditional art, and music converge</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/12r001x1_JOE_5474.JPG" alt="Digital Animation Studio" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Technology & Art</div>
+                        <div class="gallery-title">Digital Animation Studio</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/9lrvxyq9_JOE_5484.JPG" alt="Traditional Painting" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Traditional Painting</div>
+                        <div class="gallery-title">Art in Creation</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/uau61p9e_JOE_5491.JPG" alt="Musical Expression" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Violin Performance</div>
+                        <div class="gallery-title">Musical Expression</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/hs18s4n1_JOE_5527.JPG" alt="Keyboard Compositions" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Music Creation</div>
+                        <div class="gallery-title">Keyboard Compositions</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/7ylam04u_475736868_122162756096336089_3685968778260203420_n.jpg" alt="Live Performance" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Stage Performance</div>
+                        <div class="gallery-title">Live Performance</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote">
+                "Every stroke of the brush, every note played, every line of code written - they are all expressions of the same creative spirit."
+                <div class="quote-author">— Ajith Vasu</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section" style="background: var(--surface);">
+        <div class="container">
+            <h2 class="section-title playfair">Gallery & Clips</h2>
+            <p class="section-subtitle">A visual journey through artistic expression, multimedia experiments, and creative explorations</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/8veqxoz4_IMG_0461.jpg" alt="Majestic Stallion" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Oil Painting</div>
+                        <div class="gallery-title">Majestic Stallion</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/na1ckv7o_JOE_5790.JPG" alt="Wild Spirit" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Oil Painting</div>
+                        <div class="gallery-title">Wild Spirit</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/4nwmpln4_boats.png" alt="Coastal Serenity" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Watercolor</div>
+                        <div class="gallery-title">Coastal Serenity</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://customer-assets.emergentagent.com/job_creative-vision-12/artifacts/qayhwm1s_IMG_1394.JPG" alt="Portrait Study" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-category">Pencil Drawing</div>
+                        <div class="gallery-title">Portrait Study</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="section philosophy">
+        <div class="container">
+            <h2 class="section-title playfair">Philosophy & Purpose</h2>
+            
+            <h3 style="font-size: 1.5rem; margin-bottom: 2rem; text-align: center;">Technology as a Bridge to Compassion</h3>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.9;">
+                Rooted in ancient wisdom and modern innovation, my philosophy bridges the gap between technological advancement and spiritual consciousness, creating meaningful experiences that inspire positive transformation.
+            </p>
+            
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4 class="philosophy-title">Mindfulness</h4>
+                    <p>Incorporating mindfulness and deep awareness into every creative and technological endeavor, ensuring authenticity and purpose in all work.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4 class="philosophy-title">Innovation</h4>
+                    <p>Following the eightfold path of ethical conduct, mental cultivation, and wisdom development in both personal and professional growth.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="philosophy-title">Compassion</h4>
+                    <p>Using art and technology as tools for creating positive change, fostering understanding, and building bridges between cultures and communities.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 class="philosophy-title">Sustainability</h4>
+                    <p>Developing creative solutions that not only inspire but also contribute to a more sustainable and harmonious world for future generations.</p>
+                </div>
+            </div>
+            
+            <div class="quote">
+                "Technology without consciousness is merely automation.<br>
+                Technology with consciousness becomes transformation."
+                <div class="quote-author">— Ajith Vasu</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title playfair">Let's Create Something Extraordinary Together</h2>
+            <p class="section-subtitle">Whether you're looking to explore the intersection of art and technology, develop innovative multimedia experiences, or discuss philosophical approaches to creative work, I'd love to connect.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">Get In Touch</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:ajith.vasu@example.com">ajith.vasu@example.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://linkedin.com/in/ajithvasu" target="_blank">Connect on LinkedIn</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Toronto, Canada</p>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Areas of Interest</h4>
+                    <div class="interest-tags">
+                        <span class="interest-tag">Multimedia Production</span>
+                        <span class="interest-tag">AI & Technology</span>
+                        <span class="interest-tag">Educational Content</span>
+                        <span class="interest-tag">Spiritual Technology</span>
+                        <span class="interest-tag">Creative Direction</span>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#hero">Back to Top</a>
+                    <span>•</span>
+                    <span>Made with ❤️ and technology</span>
+                </div>
+                <a href="#hero" class="back-to-top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Ajith Vasu. Crafted with passion, technology, and mindfulness.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Emergent Badge -->
+    <a href="https://app.emergent.sh/?utm_source=emergent-badge" target="_blank" class="emergent-badge">
+        <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" alt="Emergent">
+        <span>Made with Emergent</span>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Show success message (in a real implementation, you'd send this to a server)
+            alert('Thank you for your message! I will get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animations
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease';
+        });
+
+        // Set initial body opacity
+        document.body.style.opacity = '0';
+    </script>
+</body>
+</html>
